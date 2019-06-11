@@ -484,13 +484,13 @@ googleWeightsRDD = googleFullRecToToken.map(lambda (url_key, tokenize): (url_key
 print 'There are %s Amazon weights and %s Google weights.' % (amazonWeightsRDD.count(),
                                                               googleWeightsRDD.count())
 
-(4c) Compute Norms for the weights from the full datasets
+#(4c) Compute Norms for the weights from the full datasets
 amazonNorms = amazonWeightsRDD.map(lambda (x,y): (x,norm(y)))
 amazonNormsBroadcast = sc.broadcast(amazonNorms.collect())
 googleNorms = googleWeightsRDD.map(lambda (x,y): (x,norm(y)))
 googleNormsBroadcast = sc.broadcast(googleNorms.collect())
 
-(4d) Create inverted indicies from the full datasets: An inverted index is a data structure that will allow us to avoid making quadratically many token comparisons
+#(4d) Create inverted indicies from the full datasets: An inverted index is a data structure that will allow us to avoid making quadratically many token comparisons
 def invert(record):
     """ Invert (ID, tokens) to a list of (token, ID)
     Args:
