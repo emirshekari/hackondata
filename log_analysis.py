@@ -1,8 +1,11 @@
+# perform web server log analysis with Apache Spark (in Python)
+# In this code, I use Apache Spark on real-world text-based production logs and fully harness the power of that data.
 import re
 import datetime
 from pyspark.sql import Row
 month_map = {'Jan': 1, 'Feb': 2, 'Mar':3, 'Apr':4, 'May':5, 'Jun':6, 'Jul':7,
     'Aug':8,  'Sep': 9, 'Oct':10, 'Nov': 11, 'Dec': 12}
+
 def parse_apache_time(s):
     """ Convert Apache time format into a Python datetime object
     Args:
@@ -16,6 +19,7 @@ def parse_apache_time(s):
                              int(s[12:14]),
                              int(s[15:17]),
                              int(s[18:20]))
+
 def parseApacheLogLine(logline):
     """ Parse a line in the Apache Common Log format
     Args:
@@ -43,8 +47,10 @@ def parseApacheLogLine(logline):
         response_code = int(match.group(8)),
         content_size  = size
     ), 1)
+
 # A regular expression pattern to extract fields from the log line
 APACHE_ACCESS_LOG_PATTERN = '^(\S+) (\S+) (\S+) \[([\w:/]+\s[+\-]\d{4})\] "(\S+) (\S+)\s*(\S*)\s*" (\d{3}) (\S+)'
+
 #(1b) Configuration and Initial RDD Creation
 import sys
 import os
@@ -73,9 +79,11 @@ def parseLogs():
     print 'Read %d lines, successfully parsed %d lines, failed to parse %d lines' % (parsed_logs.count(), access_logs.count(), failed_logs.count())
     return parsed_logs, access_logs, failed_logs
 parsed_logs, access_logs, failed_logs = parseLogs()
+
 #(1c) Data Cleaning
 APACHE_ACCESS_LOG_PATTERN = '^(\S+) (\S+) (\S+) \[([\w:/]+\s[+\-]\d{4})\] "(\S+) (\S+)\s*(\S*)\s*" (\d{3}) (\S+)'
 parsed_logs, access_logs, failed_logs = parseLogs()
+
 #Part 2: Sample Analyses on the Web Server Log File
 # Calculate statistics based on the content size.
 content_sizes = access_logs.map(lambda log: log.content_size).cache()
@@ -83,6 +91,7 @@ print 'Content Size Avg: %i, Min: %i, Max: %s' % (
     content_sizes.reduce(lambda a, b : a + b) / content_sizes.count(),
     content_sizes.min(),
     content_sizes.max())
+
 #(2b) Example: Response Code Analysis
 # Response Code to Count
 # a pair RDD is generated 
@@ -95,6 +104,7 @@ print 'Found %d response codes' % len(responseCodeToCountList)
 print 'Response Code Counts: %s' % responseCodeToCountList
 assert len(responseCodeToCountList) == 7
 assert sorted(responseCodeToCountList) == [(200, 940847), (302, 16244), (304, 79824), (403, 58), (404, 6185), (500, 2), (501, 17)]
+
 #(2c) Example: Response Code Graphing with matplotlib
 labels = responseCodeToCount.map(lambda (x, y): x).collect()
 print labels
@@ -123,7 +133,6 @@ for text, autotext in zip(texts, autotexts):
 plt.legend(labels, loc=(0.80, -0.1), shadow=True)
 display(fig)  
 pass
-
 # Create a DataFrame and visualize using display()
 responseCodeToCountRow = responseCodeToCount.map(lambda (x, y): Row(response_code=x, count=y))
 responseCodeToCountDF = sqlContext.createDataFrame(responseCodeToCountRow)
@@ -157,8 +166,7 @@ plt.plot(counts)
 display(fig)  
 pass
 
-#**(2e-dbc) Example: Visualizing Endpoints using Databricks Cloud Plots**
-
+#**(2e-dbc) Visualizing Endpoints using Databricks Cloud Plots**
 # Create an RDD with Row objects
 endpoint_counts_rdd = endpoints.map(lambda s: Row(endpoint = s[0], num_hits = s[1]))
 endpoint_counts_schema_rdd = sqlContext.createDataFrame(endpoint_counts_rdd)
@@ -166,14 +174,11 @@ endpoint_counts_schema_rdd = sqlContext.createDataFrame(endpoint_counts_rdd)
 # Display a plot of the distribution of the number of hits across the endpoints.
 display(endpoint_counts_schema_rdd)
 
-#(2f) Example: Top Endpoints
-# Top Endpoints
+#(2f) Top Endpoints
 endpointCounts = (access_logs
                   .map(lambda log: (log.endpoint, 1))
                   .reduceByKey(lambda a, b : a + b))
-
 topEndpoints = endpointCounts.takeOrdered(10, lambda s: -1 * s[1])
-
 print 'Top Ten Endpoints: %s' % topEndpoints
 assert topEndpoints == [(u'/images/NASA-logosmall.gif', 59737), (u'/images/KSC-logosmall.gif', 50452), (u'/images/MOSAIC-logosmall.gif', 43890), (u'/images/USA-logosmall.gif', 43664), (u'/images/WORLD-logosmall.gif', 43277), (u'/images/ksclogo-medium.gif', 41336), (u'/ksc.html', 28582), (u'/history/apollo/images/apollo-logo1.gif', 26778), (u'/images/launch-logo.gif', 24755), (u'/', 20292)], 'incorrect Top Ten Endpoints'
 
@@ -182,10 +187,8 @@ assert topEndpoints == [(u'/images/NASA-logosmall.gif', 59737), (u'/images/KSC-l
 not200 = (access_logs
           .map(lambda log: (log.response_code,log.endpoint))
           .filter(lambda (x,y): x != 200))
-
 endpointCountPairTuple = not200.map(lambda (x,y):(y,1))
 endpointSum = endpointCountPairTuple.reduceByKey(lambda x,y: x+y)
-
 topTenErrURLs = endpointSum.takeOrdered(10,key = lambda x: -x[1])
 print 'Top Ten failed URLs: %s' % topTenErrURLs
 
@@ -194,7 +197,6 @@ hosts = (access_logs
         .map(lambda log: (log.host,1))
         .reduceByKey(lambda x,y : x+y))
 #uniqueHosts = hosts.map(lambda (x,y): x)
-
 uniqueHostCount = hosts.count()
 print 'Unique hosts: %d' % uniqueHostCount
 
@@ -204,20 +206,15 @@ dayToHostPairTuple=access_logs.map(lambda log:(log.date_time.day,log.host))
 dayGroupedHosts=dayToHostPairTuple.groupByKey()
 #below v is a list and set(v) is another list with no repetition  TODO: Replace <FILL IN> with appropriate code
 dayHostCount = dayGroupedHosts.map(lambda (k, v): (k, set(v)))
-
 dayHostCount = dayHostCount.map(lambda (x,v):(x,len(v)))
-
 #dailyHostsList = dailyHosts.take(30)
-
 dailyHosts = (dayHostCount.sortByKey().cache())
-
 dailyHostsList = dailyHosts.take(30)
 print 'Unique hosts per day: %s' % dailyHostsList
 
 #(3d) Visualizing the Number of Unique Daily Hosts
 daysWithHosts = dailyHosts.map(lambda (k,v):k).collect()
 hosts = dailyHosts.map(lambda (k,v):v).collect()
-
 fig = plt.figure(figsize=(8,4.5), facecolor='white', edgecolor='white')
 plt.axis([min(daysWithHosts), max(daysWithHosts), 0, max(hosts)+500])
 plt.grid(b=True, which='major', axis='y')
@@ -231,7 +228,6 @@ pass
 dayAndHostTuple = access_logs.map(lambda log:(log.date_time.day,log.host))
 groupedByDay = dayAndHostTuple.groupByKey()
 sortedByDay = groupedByDay.sortByKey()
-
 avgDailyReqPerHost=(sortedByDay.map(lambda (x,v):(x,len(v)))
                     .join(dailyHosts)
                     .sortByKey()
@@ -251,25 +247,20 @@ plt.plot(daysWithAvg, avgs)
 display(fig)  
 pass
 
-#### **Part 4: Exploring 404 Response Codes**
+# Part 4: Exploring 404 Response Codes
 # 4a: Counting 404 Response Codes
 badRecords = (access_logs
               .filter(lambda log:log.response_code==404)).cache()
 print 'Found %d 404 URLs' % badRecords.count()
-
 #(4b) Listing 404 Response Code Records 
 badEndpoints = badRecords.map(lambda log:(log.endpoint,1)).reduceByKey(lambda a,b:a+b)
-
 badUniqueEndpoints = badEndpoints.map(lambda (a,b):a)
-
 badUniqueEndpointsPick40 = badUniqueEndpoints.take(40)
 print '404 URLS: %s' % badUniqueEndpointsPick40
 
 #(4c) Listing the Top Twenty 404 Response Code Endpoints
 badEndpointsCountPairTuple = badRecords.map(lambda log:(log.endpoint,1))
-
 badEndpointsSum = badEndpointsCountPairTuple.reduceByKey(lambda a,b:a+b)
-
 badEndpointsTop20 = badEndpointsSum.takeOrdered(20, lambda s:-1*s[1])
 print 'Top Twenty 404 URLs: %s' % badEndpointsTop20
 
