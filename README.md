@@ -5,7 +5,7 @@ The list of the projects are as follows:
 
 **2- log_analysis.py**
 
-**3- Machine Learning with Apache Spark: Predicting Movie Ratings **
+**3- Machine Learning with Apache Spark: Predicting Movie Ratings**
 
 **4-  Linear Regression**
 
