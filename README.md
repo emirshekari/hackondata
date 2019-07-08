@@ -4,7 +4,6 @@ The list of the projects are as follows:
 **1- Principal Component Analysis**
 
 **1- entity_resolution.py**
-![](emirshekari/sample_git.png)
 **2- log_analysis.py**
 
 **3- Predicting Movie Ratings**
