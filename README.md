@@ -12,4 +12,5 @@ The list of the projects are as follows:
 **4-  Linear Regression**
 
 **5- Principal Component Analysis**
+![](emirshekari/PCA/pca1.png)
 
