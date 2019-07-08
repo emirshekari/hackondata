@@ -25,7 +25,7 @@ Link to the notebook: https://databricks-prod-cloudfront.cloud.databricks.com/pu
 ![](pics/pca23.png)
 ![](pics/pca24.png)
 ![](pics/pca25.png)
-![](pics/pca26.png)
+![](pics/pca99.png)
 ![](pics/pca27.png)
 ![](pics/pca28.png)
 ![](pics/pca29.png)
