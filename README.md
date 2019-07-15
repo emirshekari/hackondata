@@ -3,12 +3,12 @@ The list of the projects are as follows:
 
 **1- Principal Component Analysis**
 
-**2- entity_resolution.py**
+**2- Predicting Movie Ratings **
 
-**3- log_analysis.py**
+**3- Linear Regression**
 
-**4- Predicting Movie Ratings**
+**4- entity_resolution.py**
 
-**5-  Linear Regression**
+**5-  log_analysis.py **
 
 
