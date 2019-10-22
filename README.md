@@ -11,4 +11,5 @@ The list of the projects are as follows:
 
 **5-  log_analysis.py**
 
+**6-  yolo object detector**
 
