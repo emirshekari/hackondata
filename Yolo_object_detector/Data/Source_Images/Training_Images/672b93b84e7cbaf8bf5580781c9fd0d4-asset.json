@@ -1,0 +1,48 @@
+{
+    "asset": {
+        "format": "jpg",
+        "id": "672b93b84e7cbaf8bf5580781c9fd0d4",
+        "name": "Z%20(1).jpg",
+        "path": "file:/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO_NEW/Data/Source_Images/Training_Images/Z%20(1).jpg",
+        "size": {
+            "width": 104,
+            "height": 104
+        },
+        "state": 2,
+        "type": 1
+    },
+    "regions": [
+        {
+            "id": "Vwxk5yFWn",
+            "type": "RECTANGLE",
+            "tags": [
+                "human_face"
+            ],
+            "boundingBox": {
+                "height": 98.86714071856288,
+                "width": 72.63360778443113,
+                "left": 20.670097305389223,
+                "top": 0.9821762724550899
+            },
+            "points": [
+                {
+                    "x": 20.670097305389223,
+                    "y": 0.9821762724550899
+                },
+                {
+                    "x": 93.30370508982037,
+                    "y": 0.9821762724550899
+                },
+                {
+                    "x": 93.30370508982037,
+                    "y": 99.84931699101797
+                },
+                {
+                    "x": 20.670097305389223,
+                    "y": 99.84931699101797
+                }
+            ]
+        }
+    ],
+    "version": "2.1.0"
+}

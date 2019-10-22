@@ -1,0 +1,48 @@
+{
+    "asset": {
+        "format": "jpg",
+        "id": "1867f76c2e7303809c869f6653ce5373",
+        "name": "1.jpg",
+        "path": "file:/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO_NEW/Data/Source_Images/Training_Images/1.jpg",
+        "size": {
+            "width": 104,
+            "height": 104
+        },
+        "state": 2,
+        "type": 1
+    },
+    "regions": [
+        {
+            "id": "YpL5jtQfa",
+            "type": "RECTANGLE",
+            "tags": [
+                "human_face"
+            ],
+            "boundingBox": {
+                "height": 47.0392496257485,
+                "width": 37.155454715568865,
+                "left": 48.914811002994014,
+                "top": 31.81338884730539
+            },
+            "points": [
+                {
+                    "x": 48.914811002994014,
+                    "y": 31.81338884730539
+                },
+                {
+                    "x": 86.07026571856288,
+                    "y": 31.81338884730539
+                },
+                {
+                    "x": 86.07026571856288,
+                    "y": 78.8526384730539
+                },
+                {
+                    "x": 48.914811002994014,
+                    "y": 78.8526384730539
+                }
+            ]
+        }
+    ],
+    "version": "2.1.0"
+}
