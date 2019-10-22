@@ -1,0 +1,20 @@
+image,image_path,xmin,ymin,xmax,ymax,label,confidence,x_size,y_size
+images (1).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/images (1).jpg,128,0,222,142,0,0.8169462084770203,299,168
+Doe.jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/Doe.jpg,40,68,449,361,0,0.8767680525779724,500,500
+Z.jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/Z.jpg,32,8,68,51,0,0.6431476473808289,104,104
+Z.jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/Z.jpg,64,4,104,55,0,0.7482141256332397,104,104
+9k_.jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/9k_.jpg,8,4,95,102,0,0.994327187538147,104,104
+9k_ (1).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/9k_ (1).jpg,22,7,97,100,0,0.9716246724128723,104,104
+2Q__.jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/2Q__.jpg,76,24,174,130,0,0.9183233380317688,259,194
+images (6).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/images (6).jpg,195,7,300,154,0,0.8005601167678833,300,168
+images (6).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/images (6).jpg,95,14,206,164,0,0.8969200253486633,300,168
+methode_sundaytimes_prod_web_bin_1274351a_c10a_11e9_9acd_30d026e93823.jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/methode_sundaytimes_prod_web_bin_1274351a_c10a_11e9_9acd_30d026e93823.jpg,270,92,427,281,0,0.3488255739212036,685,385
+images (5).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/images (5).jpg,80,9,256,143,0,0.972406804561615,340,148
+images (4).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/images (4).jpg,115,17,144,50,0,0.32694798707962036,188,268
+images (3).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/images (3).jpg,184,12,222,75,0,0.4825499355792999,259,194
+9k_ (2).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/9k_ (2).jpg,103,15,191,133,0,0.8003265261650085,312,161
+pepper_for_business_edition_humanoid_robot_2_years_warranty.jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/pepper_for_business_edition_humanoid_robot_2_years_warranty.jpg,18,36,337,219,0,0.9725967645645142,360,360
+images.jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/images.jpg,77,0,191,157,0,0.9481849074363708,272,185
+images (2).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/images (2).jpg,9,27,225,172,0,0.9065065979957581,225,225
+9k_ (3).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/9k_ (3).jpg,55,5,164,175,0,0.9513125419616699,225,225
+Z (1).jpg,/Users/ellie/Desktop/job/insight/TrainYourOwnYOLO/Data/Source_Images/Test_Images/Z (1).jpg,86,32,182,145,0,0.5766665935516357,275,183
